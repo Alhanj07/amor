@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corazón CSS</title>
+    <style>
+        /* Estilos globales */
+        body {
+            background: linear-gradient(to bottom, #a1c4fd, #c2e9fb);
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        p {
+            font-size: 30px;
+            font-weight: bold;
+            color: #ff4d6d;
+            text-align: center;
+        }
+
+        /* Corazones en las esquinas */
+        .corazon-esquina {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            z-index: 2;
+        }
+
+        .corazon-esquina:before,
+        .corazon-esquina:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50%;
+        }
+
+        .corazon-esquina:before { top: -25px; left: 0; }
+        .corazon-esquina:after { top: 0; left: 25px; }
+
+        .top-left { top: 10px; left: 10px; }
+        .top-right { top: 10px; right: 10px; }
+        .bottom-left { bottom: 10px; left: 10px; }
+        .bottom-right { bottom: 10px; right: 10px; }
+
+        /* Contenedor de las imágenes */
+        .imagenes-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; /* Espacio entre las imágenes */
+            margin-top: 20px;
+        }
+
+        /* Popup */
+        #popup {
+            display: none;
+            background-color: #ff4d6d;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            position: absolute;
+            top: 450px; /* Ajustar posición debajo del botón */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        /* Botón */
+        .boton {
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        /* Caja sorpresa */
+        .caja-sorpresa {
+            width: 200px;
+            height: 400px;
+            background-color: #ff4d6d;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            cursor: pointer;
+            margin-top: 200px;
+        }
+
+        .mensaje-sorpresa {
+            font-size: 18px;
+            color: white;
+            text-align: center;
+        }
+
+        /* Animación de texto */
+        .typing {
+            font-size: 24px;
+            color: #ff4d6d;
+            border-right: 2px solid;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation: escribir 4s steps(40) infinite;
+            margin-top: 150px;
+        }
+
+        @keyframes escribir {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+
+        /* Corazones cayendo */
+        @keyframes caer {
+            0% { transform: translateY(-100px) scale(0.5); opacity: 1; }
+            100% { transform: translateY(100vh) scale(1); opacity: 0; }
+        }
+
+        .corazon {
+            position: absolute;
+            font-size: 20px;
+            color: red;
+            animation: caer 5s linear infinite;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Música (sin reproducción automática, debe activarse con el botón) -->
+    <audio id="miAudio" loop>
+        <source src="cancion.mp3" type="audio/mp3">
+        Tu navegador no soporta la etiqueta de audio.
+    </audio>
+
+    <!-- Corazones en las esquinas -->
+    <div class="corazon-esquina top-left"></div>
+    <div class="corazon-esquina top-right"></div>
+    <div class="corazon-esquina bottom-left"></div>
+    <div class="corazon-esquina bottom-right"></div>
+
+    <!-- Mensaje principal -->
+    <p>¡Te amo, Wanda! 💖</p>
+
+    <!-- Contenedor de las imágenes -->
+    <div class="imagenes-container">
+        <!-- Imagen 1 -->
+        <div style="text-align: center;">
+            <img src="imagen.png.jpeg" alt="Mi amor sonriendo" width="120" style="border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+            <p style="color: #ff4d6d; font-size: 20px; margin-top: 10px;">Tu sonrisa ilumina mi universo 💫</p>
+        </div>
+        
+        <!-- Imagen 2 -->
+        <div style="text-align: center;">
+            <img src="imagen2.jpg.jpeg" alt="Imagen 2" width="250" style="border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+            <p style="color: #ff4d6d; font-size: 20px; margin-top: 10px;">¡Siempre juntos! 💫</p>
+        </div>
+    </div>
+
+    <!-- Botón para iniciar música -->
+    <button class="boton" onclick="reproducirMusica()">Reproducir música 🎶</button>
+
+    <!-- Contenedor del botón y popup -->
+    <div class="contenedor-popup">
+        <!-- Botón -->
+        <button class="boton" onclick="mostrarPopup()">¡Te quiero mucho! ❤️</button>
+
+        <!-- Popup -->
+        <div id="popup">¡Te amo mucho, mi vida! ❤️</div>
+    </div>
+
+    <!-- Caja sorpresa -->
+    <div class="caja-sorpresa" onclick="cambiarMensaje()">
+        <div class="mensaje-sorpresa" id="mensajeCaja">¡Haz clic para ver algo especial!</div>
+    </div>
+
+    <!-- Mensaje animado -->
+    <p class="typing">Eres el amor de mi vida, Wanda. ❤️</p>
+
+    <script>
+        // Función para reproducir música cuando el usuario hace clic en el botón
+        function reproducirMusica() {
+            const audio = document.getElementById('miAudio');
+            audio.play();
+        }
+
+        // Mostrar popup
+        function mostrarPopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'block';
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 3000);
+        }
+
+        // Mensajes sorpresa
+        const mensajes = [
+            "Te amo más de lo que las palabras pueden decir ❤️",
+            "Eres mi sueño hecho realidad ✨",
+            "Siempre estaré a tu lado, mi amor 💖"
+        ];
+
+        function cambiarMensaje() {
+            const indice = Math.floor(Math.random() * mensajes.length);
+            document.getElementById('mensajeCaja').textContent = mensajes[indice];
+        }
+
+        // Crear corazones cayendo
+        function crearCorazones() {
+            const cantidad = 10;
+            for (let i = 0; i < cantidad; i++) {
+                const corazon = document.createElement('div');
+                corazon.classList.add('corazon');
+                corazon.innerHTML = '❤️';
+                corazon.style.left = Math.random() * 100 + 'vw';
+                corazon.style.animationDuration = Math.random() * 3 + 2 + 's';
+                corazon.style.fontSize = Math.random() * 20 + 10 + 'px';
+                document.body.appendChild(corazon);
+
+                setTimeout(() => corazon.remove(), 5000);
+            }
+        }
+
+        setInterval(crearCorazones, 500);
+    </script>
+</body>
+</html>
