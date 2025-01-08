@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página para mi Novia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffcccb;
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden; /* Evita que se salga el contenido */
+        }
+
+        /* Animación de entrada */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .container {
+            padding: 50px;
+            margin-top: 10%;
+            z-index: 10;
+            position: relative;
+            animation: fadeIn 2s ease-out; /* Aplicar animación de entrada */
+        }
+
+        h1 {
+            color: #d50000;
+            font-size: 3rem;
+            animation: fadeIn 2s ease-out; /* Animación de entrada */
+        }
+
+        p {
+            font-size: 1.5rem;
+            color: #ff4081;
+            animation: fadeIn 2s ease-out;
+        }
+
+        /* Botones */
+        button {
+            background-color: #ff80ab;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            margin-right: 20px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        button:hover {
+            background-color: #ff4081;
+        }
+
+        /* Estilos para el reproductor de audio */
+        #audioPlayer {
+            margin-top: 30px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        /* Estilos para las imágenes */
+        .image-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .image-container img {
+            max-width: 180px;  /* Tamaño de las imágenes */
+            max-height: 180px;  /* Limitar altura para evitar distorsión */
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out; /* Efecto al pasar el mouse */
+            animation: fadeIn 2s ease-out;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.1); /* Efecto de aumento al pasar el mouse */
+        }
+
+        /* Estilo para el texto adicional debajo de las imágenes */
+        .additional-text {
+            font-size: 1.5rem;
+            color: #d50000;
+            margin-top: 40px;
+            line-height: 1.6;
+            font-weight: bold;
+            background-color: #ffe0e0;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #ff80ab;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeIn 2s ease-out;
+        }
+
+        /* Efecto de parpadeo */
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .blinking-text {
+            animation: blink 1s infinite;
+        }
+
+        /* Ocultar el contenedor del mensaje inicialmente */
+        #messageContainer {
+            display: none; /* Este es el cambio, el mensaje estará oculto */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Para ti, mi Wanda, Mi vida, Mi motor de vida, Mi todo ❤️</h1>
+        <p class="blinking-text">Haz clic en los botones para ver lo que he preparado para ti...</p>
+
+        <!-- Botón para reproducir música -->
+        <button id="musicButton">Click aquí My Wanda para la música ❤️</button>
+
+        <!-- Botón para ver el video -->
+        <a href="amor.mp4" target="_blank">
+            <button>Haz clic aquí mi vida para ver el video💫</button>
+        </a>
+
+        <!-- Botón para mostrar mensaje -->
+        <button id="textButton">Click aquí My Wanda para el mensaje ✨</button>
+
+        <!-- Reproductor de audio -->
+        <div id="audioPlayer">
+            <audio id="audio" preload="auto">
+                <source src="HUMBE - AMOR DE CINE (Visualizer).mp3" type="audio/mp3">
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+        </div>
+
+        <!-- Contenedor para el mensaje -->
+        <div id="messageContainer">
+            <p class="romanticMessage">
+                Desde que te conocí, mi alma ha experimentado una epifanía amorosa que trasciende el tiempo y el espacio. Siento que cada momento a tu lado es un amaranto, eterno y lleno de significado. Mi corazón, antes perdido en la limerencia de deseos fugaces, ahora late con la calma profunda de una eunoia compartida, donde cada pensamiento es un suspiro que se eleva hacia ti, My Wanda ❤️.
+                <br><br>
+                Tu amor es mi sublime refugio, el faro que ilumina mis días más oscuros, y en tus ojos encuentro una cenestesia que me envuelve, como si el mundo entero se redujera a un rincón de nuestro propio universo. Aunque a veces experimente la saudade cuando no estás, sé que este amor es la esencia misma de mi ser, algo que no puede ser más que inmortal, como un amaranto que florece siempre, incluso cuando nos separan las distancias.
+            </p>
+        </div>
+
+        <!-- Contenedor de imágenes -->
+        <div class="image-container">
+            <!-- Imágenes añadidas -->
+            <img src="1.jpeg" alt="Imagen 1">
+            <img src="2.jpeg" alt="Imagen 2">
+            <img src="3.jpeg" alt="Imagen 3">
+            <img src="4.jpeg" alt="Imagen 4">
+            <img src="5.jpeg" alt="Imagen 5">
+        </div>
+
+        <!-- Texto adicional debajo de las imágenes -->
+        <div class="additional-text">
+            Mi niña hermosa, todo de ti me encanta. Tu belleza es única, eres una mujer hermosísima que cada vez que te miro, siento que el mundo se detiene. Tu sonrisa ilumina mi vida y tus ojos reflejan todo lo que necesito. Eres mi paz, mi felicidad, y no hay nada más hermoso que verte a ti ❤️✨
+        </div>
+    </div>
+
+    <script>
+        // JavaScript dentro del archivo HTML
+
+        // Obtener los botones, el reproductor de audio y el contenedor del mensaje
+        const musicButton = document.getElementById("musicButton");
+        const audio = document.getElementById("audio");
+        const textButton = document.getElementById("textButton");
+        const messageContainer = document.getElementById("messageContainer");
+
+        // Escuchar el clic en el botón de música
+        musicButton.addEventListener("click", function() {
+            if (audio.paused) {
+                audio.play();  // Reproducir la canción
+                musicButton.textContent = "Pausar música";  // Cambiar el texto del botón
+            } else {
+                audio.pause();  // Pausar la canción
+                musicButton.textContent = "Click aquí My Wanda para la música";  // Cambiar el texto del botón
+            }
+        });
+
+        // Escuchar el clic en el botón de texto
+        textButton.addEventListener("click", function() {
+            // Cambiar la visibilidad del mensaje
+            if (messageContainer.style.display === "none" || messageContainer.style.display === "") {
+                messageContainer.style.display = "block"; // Mostrar el mensaje
+                textButton.textContent = "Ocultar mensaje";  // Cambiar el texto del botón
+            } else {
+                messageContainer.style.display = "none"; // Ocultar el mensaje
+                textButton.textContent = "Click aquí My Wanda para el mensaje";  // Cambiar el texto del botón
+            }
+        });
+    </script>
+</body>
+</html>
